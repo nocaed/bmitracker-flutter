@@ -1,4 +1,6 @@
 import 'dart:math';
+
+import 'package:flutter/material.dart';
 /// This is a library meant to calculate a person's BMI.
 
 /// This is an enum meant to configure the calculation mode of the BMI based
@@ -28,4 +30,12 @@ class BMICalculator {
     var newWeight = _unit == BMIUnit.customary ? weight * _poundMultiplier : weight;
     return newWeight / newHeight;
   }
+}
+
+class BMIAdviceInfo {
+  String bmi;
+  MaterialColor bmiColor;
+  String advice;
+
+  BMIAdviceInfo(this.bmi, this.bmiColor, this.advice);
 }
