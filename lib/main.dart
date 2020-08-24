@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         buttonColor: Colors.lightGreen,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Center(child: Text('Hello World'),),
+      home: BMIInputForm()
     );
   }
 }
