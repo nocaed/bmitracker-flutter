@@ -189,21 +189,23 @@ class _BMIInputFormState extends State<BMIInputForm> {
       appBar: AppBar(
         title: Center(child: Text('BMI Calculator')),
       ),
-      body: Form(
-        key: _formKey,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildNumberField(true),
-              _buildNumberField(false),
-              _buildRadioUnitGroup(),
-              _buildCalculateButton(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('Your BMI: $_currentBMI'),
-              )
-            ],
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildNumberField(true),
+                _buildNumberField(false),
+                _buildRadioUnitGroup(),
+                _buildCalculateButton(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Your BMI: $_currentBMI'),
+                )
+              ],
+            ),
           ),
         ),
       ),
