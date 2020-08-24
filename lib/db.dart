@@ -4,12 +4,12 @@ import 'dart:async';
 
 const String databaseName = 'test.db';
 
-class BMIData {
+class BMILog {
   int _id;
   double _bmi;
   String _date;
 
-  BMIData(int id, double bmi) {
+  BMILog(int id, double bmi) {
     _id = id;
     _bmi = bmi;
     _date = DateTime.now().toIso8601String();
