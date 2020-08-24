@@ -52,6 +52,13 @@ class _BMIInputFormState extends State<BMIInputForm> {
   }
 
   @override
+  void dispose() {
+    _weightController.dispose();
+    _heightController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
 
