@@ -2,6 +2,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 
+import 'package:sqflite/sql.dart';
+
 /// Data model for querying bmi database.
 class BMILog {
   int _id;
@@ -13,6 +15,8 @@ class BMILog {
     _bmi = bmi;
     _date = DateTime.now().toIso8601String();
   }
+
+  BMILog.fetch(this._id, this._bmi, this._date);
 
   Map<String, dynamic> toMap() {
     return {
@@ -48,5 +52,14 @@ class BMIDatabaseQuerySystem {
       log.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace
     );
+  }
+
+  Future<List<BMILog>> bmiLogs() async {
+    List<Map<String, dynamic>> maps = await _database.query('bmilogs');
+    return List.generate(maps.length, (i) => BMILog.fetch(
+      maps[i]['id'],
+      maps[i]['bmi'],
+      maps[i]['date']
+    ));
   }
 }
