@@ -75,4 +75,12 @@ class BMIDatabaseQuerySystem {
       whereArgs: [log.id]
     );
   }
+
+  Future<void> deleteBMILog(int id) async {
+    await _database.delete(
+      _tableName,
+      where: 'id = ?',
+      whereArgs: [id]
+    );
+  }
 }
