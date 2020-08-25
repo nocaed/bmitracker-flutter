@@ -2,7 +2,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 
-import 'package:sqflite/sql.dart';
 
 /// Data model for querying bmi database.
 class BMILog {
