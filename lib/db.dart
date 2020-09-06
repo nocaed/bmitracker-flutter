@@ -46,7 +46,7 @@ class BMIDatabaseQuerySystem {
   // The table name of the bmi logs
   static const String _tableName = 'bmilogs';
   // The database instance
-  Database _database;
+  Future<Database> _database;
 
   /// Default constructor for the query system.
   factory BMIDatabaseQuerySystem() => _singleton;
@@ -58,7 +58,7 @@ class BMIDatabaseQuerySystem {
 
   // Helper function that starts the database asynchronously
   void _startDb() async {
-    _database = await openDatabase(
+    _database = openDatabase(
       join(await getDatabasesPath(), _databaseName),
       onCreate: (db, version) => db.execute('CREATE TABLE $_tableName(id INTEGER PRIMARY KEY, bmi REAL, date TEXT)'),
       version: 1
@@ -67,7 +67,8 @@ class BMIDatabaseQuerySystem {
 
   /// Inserts a new bmi log into the database.
   Future<void> insertBMILog(BMILog log) async {
-    await _database.insert(
+    var db = await _database;
+    await db.insert(
       _tableName,
       log.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace
@@ -76,7 +77,8 @@ class BMIDatabaseQuerySystem {
 
   /// Retrieves all bmi logs from the database.
   Future<List<BMILog>> getBMILogs() async {
-    List<Map<String, dynamic>> maps = await _database.query(_tableName);
+    var db = await _database;
+    List<Map<String, dynamic>> maps = await db.query(_tableName);
     return List.generate(maps.length, (i) => BMILog.fetch(
       maps[i]['id'],
       maps[i]['bmi'],
@@ -86,7 +88,8 @@ class BMIDatabaseQuerySystem {
 
   /// Updates a target bmi log in the database.
   Future<void> updateBMILog(BMILog log) async {
-    await _database.update(
+    var db = await _database;
+    await db.update(
       _tableName,
       log.toMap(),
       where: 'id = ?',
@@ -96,7 +99,8 @@ class BMIDatabaseQuerySystem {
 
   /// Deletes a target bmi log in the database.
   Future<void> deleteBMILog(int id) async {
-    await _database.delete(
+    var db = await _database;
+    await db.delete(
       _tableName,
       where: 'id = ?',
       whereArgs: [id]
