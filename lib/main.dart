@@ -183,6 +183,13 @@ class _BMIInputFormState extends State<BMIInputForm> {
     );
   }
 
+  Widget _buildLogButton() {
+    return RaisedButton(
+      child: Text('Log BMI'),
+      onPressed: () {},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -203,7 +210,8 @@ class _BMIInputFormState extends State<BMIInputForm> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text('Your BMI: $_currentBMI'),
-                )
+                ),
+                _buildLogButton()
               ],
             ),
           ),
