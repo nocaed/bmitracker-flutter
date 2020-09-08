@@ -4,13 +4,8 @@ class LogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: const Text('Your Progress'),),
-      ),
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Text('Test'),
-      ),
-    );
+      );
   }
 }

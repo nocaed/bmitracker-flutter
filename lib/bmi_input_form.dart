@@ -164,6 +164,13 @@ class _BMIInputFormState extends State<BMIInputForm> {
     );
   }
 
+  Widget _buildLogButton() {
+    return RaisedButton(
+      child: Text('Log BMI'),
+      onPressed: () {},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -185,14 +192,11 @@ class _BMIInputFormState extends State<BMIInputForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: RaisedButton(
-                        child: Text('Log BMI'),
-                        onPressed: () {},
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: _buildLogButton()
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: RaisedButton(
                         child: const Text('Advice'),
                         onPressed: _pushAdviceScreen,
